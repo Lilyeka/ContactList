@@ -272,12 +272,12 @@
                   symbolName = "PersonContacts.ContactsListViewController.persons.getter : Swift.Optional&lt;Swift.Array&lt;PersonContacts.Person&gt;&gt;"
                   moduleName = "PersonContacts"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/liliyalevina/Desktop/PersonContacts/ContactsListViewController.swift"
-                  timestampString = "514372738.454837"
+                  urlString = "file:///Users/liliyalevina/Desktop/PersonContactsForGithub/ContactsListViewController.swift"
+                  timestampString = "515580858.901016"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
                   offsetFromSymbolStart = "48">
                </Location>
                <Location
@@ -287,12 +287,12 @@
                   symbolName = "PersonContacts.ContactsListViewController.persons.setter : Swift.Optional&lt;Swift.Array&lt;PersonContacts.Person&gt;&gt;"
                   moduleName = "PersonContacts"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/liliyalevina/Desktop/PersonContacts/ContactsListViewController.swift"
-                  timestampString = "514372738.456636"
+                  urlString = "file:///Users/liliyalevina/Desktop/PersonContactsForGithub/ContactsListViewController.swift"
+                  timestampString = "515580858.905686"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
                   offsetFromSymbolStart = "72">
                </Location>
                <Location
@@ -302,13 +302,13 @@
                   symbolName = "PersonContacts.ContactsListViewController.init (collectionViewLayout : __ObjC.UICollectionViewLayout) -&gt; PersonContacts.ContactsListViewController"
                   moduleName = "PersonContacts"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/liliyalevina/Desktop/PersonContacts/ContactsListViewController.swift"
-                  timestampString = "514372738.459478"
+                  urlString = "file:///Users/liliyalevina/Desktop/PersonContactsForGithub/ContactsListViewController.swift"
+                  timestampString = "515580858.909485"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "52">
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
                   shouldBeEnabled = "No"
@@ -317,13 +317,13 @@
                   symbolName = "PersonContacts.ContactsListViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; PersonContacts.ContactsListViewController"
                   moduleName = "PersonContacts"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/liliyalevina/Desktop/PersonContacts/ContactsListViewController.swift"
-                  timestampString = "514372738.461239"
+                  urlString = "file:///Users/liliyalevina/Desktop/PersonContactsForGithub/ContactsListViewController.swift"
+                  timestampString = "515580858.912446"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "92">
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "68">
                </Location>
                <Location
                   shouldBeEnabled = "No"
@@ -332,13 +332,13 @@
                   symbolName = "PersonContacts.ContactsListViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;PersonContacts.ContactsListViewController&gt;"
                   moduleName = "PersonContacts"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/liliyalevina/Desktop/PersonContacts/ContactsListViewController.swift"
-                  timestampString = "514372738.462892"
+                  urlString = "file:///Users/liliyalevina/Desktop/PersonContactsForGithub/ContactsListViewController.swift"
+                  timestampString = "515580858.915625"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "52">
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -355,8 +355,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
             endingLineNumber = "153"
-            landmarkName = "ContactsListViewController"
-            landmarkType = "3">
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -800,8 +800,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
             endingLineNumber = "130"
-            landmarkName = "ContactsListViewController"
-            landmarkType = "3">
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
