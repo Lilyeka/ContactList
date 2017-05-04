@@ -18,8 +18,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     let gesher = UITapGestureRecognizer()
     
     var rightBarButtons = [UIBarButtonItem]()
-    //var leftBarButtons = [UIBarButtonItem]()
-    
+
     var personTypeLabel: UILabel = {
         let label = UILabel()
         label.text = "Тип контакта:"
@@ -33,16 +32,16 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         tf.font = UIFont.systemFont(ofSize: 20)
         tf.textAlignment = NSTextAlignment.left
         tf.placeholder = "Друг/Коллега"
+        tf.borderStyle = .roundedRect
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
     
-  var image: UIImageView = {
-        let img = UIImageView()
-        img.layer.cornerRadius = 10.0
+    var image: UIImageView = {
+        let img = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        img.layer.cornerRadius = 70.0
         img.clipsToBounds = true
-        img.translatesAutoresizingMaskIntoConstraints = false
-        img.contentMode = .scaleAspectFit
+        img.contentMode = .scaleAspectFill
         img.isUserInteractionEnabled = true
         return img
     }()
@@ -52,6 +51,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         tf.font = UIFont.systemFont(ofSize: 20)
         tf.textAlignment = NSTextAlignment.left
         tf.placeholder = "Имя"
+        tf.borderStyle = .roundedRect
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -60,6 +60,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         tf.font = UIFont.systemFont(ofSize: 20)
         tf.textAlignment = NSTextAlignment.left
         tf.placeholder = "Фамилия"
+        tf.borderStyle = .roundedRect
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -68,6 +69,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         tf.font = UIFont.systemFont(ofSize: 20)
         tf.textAlignment = NSTextAlignment.left
         tf.placeholder = "Отчество"
+        tf.borderStyle = .roundedRect
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -76,6 +78,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         tf.font = UIFont.systemFont(ofSize: 20)
         tf.textAlignment = NSTextAlignment.left
         tf.placeholder = "Основной телефон"
+        tf.borderStyle = .roundedRect
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -115,6 +118,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         tf.font = UIFont.systemFont(ofSize: 20)
         tf.textAlignment = NSTextAlignment.left
         tf.placeholder = "дд.мм.гггг"
+        tf.borderStyle = .roundedRect
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -124,6 +128,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         tf.font = UIFont.systemFont(ofSize: 20)
         tf.textAlignment = NSTextAlignment.left
         tf.placeholder = "Должность"
+        tf.borderStyle = .roundedRect
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -133,16 +138,39 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         tf.font = UIFont.systemFont(ofSize: 20)
         tf.textAlignment = NSTextAlignment.left
         tf.placeholder = "Рабочий телефон"
+        tf.borderStyle = .roundedRect
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
+    
+    var myScrollView: UIScrollView = {
+        let scrollV = UIScrollView()
+        scrollV.translatesAutoresizingMaskIntoConstraints = false
+        return scrollV
+    }()
+    
+    var myStackView: UIStackView = {
+        let stackV = UIStackView()
+        stackV.backgroundColor = .green
+        stackV.translatesAutoresizingMaskIntoConstraints = false
+        stackV.axis = .vertical
+        stackV.alignment = .fill
+        stackV.distribution = .equalSpacing
+        stackV.spacing = 20.0
+        return stackV
+    }()
 
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        myScrollView.contentSize = myStackView.bounds.size
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupData()
         setupViews()
+        
         picker.delegate = self
         picker.dataSource = self
         personTypeTxt.inputView = picker
@@ -157,31 +185,32 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         textFieldPosition.delegate = self
         textFieldJobTelephon.delegate = self
         personTypeTxt.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShowFunc(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHideFunc(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+       // navigationController?.automaticallyAdjustsScrollViewInsets = true
+       // navigationController?.extendedLayoutIncludesOpaqueBars = true
+       // myScrollView.contentInset.top = 64.0
+        myScrollView.contentInset.bottom = 20.0
     }
     
-   override func viewWillAppear(_ animated: Bool) {
-        
-        navigationItem.title = "Title"
-       
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+   
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = "Карточка контакта"
         rightBarButtons.append(UIBarButtonItem(title: "Готово", style: .done, target: self, action: #selector(saveButtonAction)))
     
         navigationItem.rightBarButtonItem = rightBarButtons[0] //справа кнопка Готово
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
  
-    func saveButtonAction(){// по кнопке Готово
-        print("SAVE!!!")
+    func saveButtonAction(){// по кнопке Готово сохранение
         navigationItem.leftBarButtonItem = nil
         navigationItem.rightBarButtonItem?.isEnabled = false
-        
-        textFieldName.resignFirstResponder()
-        textFieldSurName.resignFirstResponder()
-        textFieldFatherName.resignFirstResponder()
-        textFieldTelephon.resignFirstResponder()
-        textFieldBithday.resignFirstResponder()
-        textFieldPosition.resignFirstResponder()
-        textFieldJobTelephon.resignFirstResponder()
-      
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -192,8 +221,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             person1.phoneNumber = textFieldTelephon.text
             person1.fatherName = textFieldFatherName.text
             person1.birthday = textFieldBithday.text
-            //UIImage(da)
-            //  person?.image = image.image
             person1.imageBinary = UIImagePNGRepresentation(image.image!)! as NSData
             person1.position = textFieldPosition.text
             person1.jobPhoneNumber = textFieldJobTelephon.text
@@ -209,7 +236,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         person?.phoneNumber = textFieldTelephon.text
         person?.fatherName = textFieldFatherName.text
         person?.birthday = textFieldBithday.text
-      //  person?.image = image.image
         person?.imageBinary = UIImagePNGRepresentation(image.image!)! as NSData
         person?.position = textFieldPosition.text
         person?.jobPhoneNumber = textFieldJobTelephon.text
@@ -231,6 +257,34 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         navigationItem.rightBarButtonItem?.isEnabled = true
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    //MARK: Keyboard Insets
+    
+    func keyboardShowFunc(notification: NSNotification){
+        if myScrollView.contentInset.bottom <= 20{
+            
+            changeScrollView(showKeyboard: true, notification: notification)
+        }
+    }
+    
+    func keyboardHideFunc(notification: NSNotification){
+        changeScrollView(showKeyboard: false, notification: notification)
+    }
+    
+    func changeScrollView(showKeyboard: Bool, notification: NSNotification) {
+        let userInfo = notification.userInfo ?? [:]
+        let keyboardFrame = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        let keyboardHeight = keyboardFrame.height * (showKeyboard ? 1: -1)
+        
+        myScrollView.contentInset.bottom += keyboardHeight
+        myScrollView.scrollIndicatorInsets.bottom += keyboardHeight
     }
 
 }
