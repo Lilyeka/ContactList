@@ -41,78 +41,38 @@ extension DetailViewController{
     
     
     func setupViews(){
-        view.addSubview(textFieldName)
-        view.addSubview(textFieldSurName)
-        view.addSubview(textFieldFatherName)
-        view.addSubview(image)
-        view.addSubview(textFieldTelephon)
-        view.addSubview(textFieldBithday)
-        view.addSubview(textFieldPosition)
-        view.addSubview(textFieldJobTelephon)
-        view.addSubview(personTypeLabel)
-        view.addSubview(personTypeTxt)
-        view.addSubview(birthdayLabel)
-        view.addSubview(phoneLabel)
-        view.addSubview(positionLabel)
-        view.addSubview(jobPhoneLabel)
         
-        image.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 12.0).isActive = true
-        image.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12.0).isActive = true
-        image.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4).isActive = true
-        image.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4).isActive = true
+        myStackView.addArrangedSubview(textFieldName)
+        myStackView.addArrangedSubview(textFieldSurName)
+        myStackView.addArrangedSubview(textFieldFatherName)
+        myStackView.addArrangedSubview(image)
+        myStackView.addArrangedSubview(phoneLabel)
+        myStackView.addArrangedSubview(textFieldTelephon)
+        myStackView.addArrangedSubview(birthdayLabel)
+        myStackView.addArrangedSubview(textFieldBithday)
+        myStackView.addArrangedSubview(positionLabel)
+        myStackView.addArrangedSubview(textFieldPosition)
+        myStackView.addArrangedSubview(jobPhoneLabel)
+        myStackView.addArrangedSubview(textFieldJobTelephon)
+        myStackView.addArrangedSubview(personTypeLabel)
+        myStackView.addArrangedSubview(personTypeTxt)
+        myScrollView.addSubview(myStackView)
+        view.addSubview(myScrollView)
         
-        textFieldName.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 12.0).isActive = true
-        textFieldName.leftAnchor.constraint(equalTo: image.rightAnchor, constant: 12.0).isActive = true
-        textFieldName.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12.0).isActive = true
+        myScrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        myScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        myScrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        myScrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+  
+        myStackView.topAnchor.constraint(equalTo: myScrollView.topAnchor).isActive = true
+        myStackView.bottomAnchor.constraint(equalTo: myScrollView.bottomAnchor).isActive = true
+        myStackView.rightAnchor.constraint(equalTo: myScrollView.rightAnchor).isActive = true
+        myStackView.leftAnchor.constraint(equalTo: myScrollView.leftAnchor).isActive = true
         
-        textFieldSurName.topAnchor.constraint(equalTo: textFieldName.bottomAnchor, constant: 12.0).isActive = true
-        textFieldSurName.leftAnchor.constraint(equalTo: image.rightAnchor, constant: 12.0).isActive = true
-        textFieldSurName.rightAnchor.constraint(equalTo: textFieldName.rightAnchor).isActive = true
-        
-        textFieldFatherName.topAnchor.constraint(equalTo: textFieldSurName.bottomAnchor, constant: 12.0).isActive = true
-        textFieldFatherName.leftAnchor.constraint(equalTo: image.rightAnchor, constant: 12.0).isActive = true
-        textFieldFatherName.rightAnchor.constraint(equalTo: textFieldSurName.rightAnchor).isActive = true
-        
-        personTypeLabel.topAnchor.constraint(equalTo: textFieldFatherName.bottomAnchor, constant: 24.0).isActive = true
-        personTypeLabel.leftAnchor.constraint(equalTo: image.rightAnchor, constant: 12.0).isActive = true
-        personTypeLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12.0).isActive = true
-        
-        personTypeTxt.topAnchor.constraint(equalTo: personTypeLabel.bottomAnchor, constant: 4.0).isActive = true
-        personTypeTxt.leftAnchor.constraint(equalTo: image.rightAnchor, constant: 12.0).isActive = true
-        personTypeTxt.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12.0).isActive = true
-        
-        birthdayLabel.topAnchor.constraint(equalTo: personTypeTxt.bottomAnchor, constant: 24.0).isActive = true
-        birthdayLabel.leftAnchor.constraint(equalTo: image.rightAnchor, constant: 12.0).isActive = true
-        birthdayLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12.0).isActive = true
-        
-        textFieldBithday.topAnchor.constraint(equalTo: birthdayLabel.bottomAnchor, constant: 4.0).isActive = true
-        textFieldBithday.leftAnchor.constraint(equalTo: image.rightAnchor, constant: 12.0).isActive = true
-        textFieldBithday.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12.0).isActive = true
-        
-        phoneLabel.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 2.0).isActive = true
-        phoneLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 12.0).isActive = true
-        
-        textFieldTelephon.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 2.0).isActive = true
-        textFieldTelephon.leftAnchor.constraint(equalTo: phoneLabel.rightAnchor, constant: 4.0).isActive = true
-        textFieldTelephon.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12.0).isActive = true
-        
-        positionLabel.topAnchor.constraint(equalTo: phoneLabel.bottomAnchor, constant: 4.0).isActive = true
-        positionLabel.leftAnchor.constraint(equalTo: phoneLabel.leftAnchor).isActive = true
-        //positionLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12.0).isActive = true
-        
-        textFieldPosition.topAnchor.constraint(equalTo: phoneLabel.bottomAnchor, constant: 4.0).isActive = true
-        textFieldPosition.leftAnchor.constraint(equalTo: positionLabel.rightAnchor).isActive = true
-        textFieldPosition.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12.0).isActive = true
-        
-        jobPhoneLabel.topAnchor.constraint(equalTo: positionLabel.bottomAnchor, constant: 4.0).isActive = true
-        jobPhoneLabel.leftAnchor.constraint(equalTo: positionLabel.leftAnchor).isActive = true
-       // textFieldPosition.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12.0).isActive = true
-        
-        textFieldJobTelephon.topAnchor.constraint(equalTo: positionLabel.bottomAnchor, constant: 4.0).isActive = true
-        textFieldJobTelephon.leftAnchor.constraint(equalTo: jobPhoneLabel.rightAnchor, constant: 12.0).isActive = true
-        textFieldJobTelephon.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -12.0).isActive = true
-        
-       
+        //   Важно! для веритикальной прокрутки!
+        myStackView.widthAnchor.constraint(equalTo: myScrollView.widthAnchor).isActive = true
+        //
+        image.heightAnchor.constraint(equalTo: image.widthAnchor).isActive = true
     }
     
     //MARK: UIPickerController

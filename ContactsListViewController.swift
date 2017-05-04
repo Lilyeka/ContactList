@@ -20,8 +20,7 @@ class ContactsListViewController: UICollectionViewController, UICollectionViewDe
     var persons: [Person]? = nil
     var friends = [Person]()
     var collegues = [Person]()
-    var dataInitialized: Bool = false
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = .white

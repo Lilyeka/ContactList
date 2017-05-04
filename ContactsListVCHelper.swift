@@ -10,10 +10,9 @@ import Foundation
 import UIKit
 import CoreData
 
-
-
 extension ContactsListViewController {
-    // Очищает CoreData
+    
+    // Очищает CoreData(служебная функция)
     func clearData(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -67,15 +66,13 @@ extension ContactsListViewController {
     }catch let err {
         print(err)
     }
-    
-    dataInitialized = true
     loadData()
 }
     
 func loadData(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = appDelegate.persistentContainer.viewContext
-        do{
+        do {
             persons = try(managedContext.fetch(Person.fetchRequest()))
         } catch let err{
             print(err)
@@ -93,7 +90,6 @@ func loadData(){
         }
         friends = friends1
         collegues = collegues1
-
     }
 }
 
